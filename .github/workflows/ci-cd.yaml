@@ -7,7 +7,7 @@ jobs:
   push:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.event_name }} event triggered this job
+      - run: echo "${{ github.event_name }} event triggered this job"
       - run: echo "================================================="
       - name: Checking out the repository code
         uses: actions/checkout@v4
