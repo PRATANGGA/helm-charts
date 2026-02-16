@@ -1,0 +1,49 @@
+name: Store Helm Template to R2 service cloudflare
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event_name }} event triggered this job
+      - run: echo "================================================="
+      - run: echo "Details repository --> repository name: ${{ github.repository }} repository"
+      - name: Checking out the repository code
+        uses: actions/checkout@v4
+      - name: Setup Helm 
+        run: apt-get update -y && apt-get install curl apt-transport-https --yes
+      - name: Add helm repo into sourcelist apt
+        run: curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null | echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+      - name: Update APT and install helm 
+        run: apt-get update -y && apt-get install helm
+
+  test-helm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check helm version 
+        run: echo "=================================================="
+      - name: Run Helm version
+        run: helm version
+
+  # build-template-helm:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Build Helm Template 
+  #       run: helm template .
+
+       
+  
+
+
+
+
+
+        
+
+
+        
+
+
+
