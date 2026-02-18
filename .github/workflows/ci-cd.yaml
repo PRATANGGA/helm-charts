@@ -34,7 +34,7 @@ jobs:
       - name: Debug Structure
         run: ls -R
       - name: Create helm repo 
-        run: helm package helm-charts 
+        run: helm package . 
 
   push-on-R2:
     runs-on: ubuntu-latest
