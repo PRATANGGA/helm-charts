@@ -46,7 +46,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install AWS cli
-        run: sudo apt update -y && sudo apt install awscli
+        run: sudo apt update -y && sudo apt install awscli -y
       - name: Configure AWS cli for Cloudflare R2
         env:
           R2_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
