@@ -32,7 +32,7 @@ jobs:
     needs: test-helm
     steps:
       - name: Create helm repo 
-        run: helm package main-app 
+        run: helm package helm-charts 
 
   push-on-R2:
     runs-on: ubuntu-latest
