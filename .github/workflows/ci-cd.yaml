@@ -34,7 +34,9 @@ jobs:
       - name: Debug Structure
         run: ls -R
       - name: Create helm repo 
-        run: helm package . 
+        run: | 
+          VERSION="${GITHUB_REF_NAME#v}"
+          helm package charts/main-app --version "$VERSION" 
 
   push-on-R2:
     runs-on: ubuntu-latest
