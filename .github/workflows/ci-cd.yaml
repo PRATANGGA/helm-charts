@@ -50,7 +50,7 @@ jobs:
           sudo apt update -y 
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip 
-          sudo ./aws/install
+          sudo ./aws/install --update
       - name: Configure AWS cli for Cloudflare R2
         env:
           R2_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
