@@ -38,6 +38,12 @@ jobs:
         run: | 
           VERSION="${GITHUB_REF_NAME#v}"
           helm package . --version "$VERSION"
+      - name: Upload helm package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: helm-package
+          path: "*.tgz"
+
 
 
   push-on-R2:
