@@ -67,7 +67,7 @@ jobs:
           aws configure set aws_access_key "$R2_ACCESS_KEY"
       - name: Pre upload to R2
         run: | 
-          VERSION="${GITHUB_REF}"
+          VERSION="${GITHUB_REF_NAME}"
           PACKAGE_FILE="$(ls *.tgz)"
           echo "Uploading $PACKAGE_FILE as main-app-$VERSION.tgz"
       - name: Upload to R2 services
