@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-helm
     steps:
+      - name: Debug Structure
+        run: ls -R
       - name: Create helm repo 
         run: helm package helm-charts 
 
