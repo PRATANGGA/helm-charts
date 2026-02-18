@@ -54,9 +54,7 @@ jobs:
           PACKAGE_FILE="$(ls *.tgz)"
           echo "Uploading $PACKAGE_FILE as main-app-$VERSION.tgz"
       - name: Upload to R2 services
-        run:  aws s3 cp "$PACKAGE_FILE" \
-      "s3://$R2_BUCKET/main-app-$VERSION.tgz" \
-      --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com
+        run:  aws s3 cp "$PACKAGE_FILE" "s3://$R2_BUCKET_NAME/main-app-$VERSION.tgz" --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com
 
 
 
