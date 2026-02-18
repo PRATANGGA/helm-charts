@@ -52,7 +52,7 @@ jobs:
         run: | 
           VERSION="${GITHUB_REF}"
           PACKAGE_FILE="$(ls *.tgz)"
-        echo "Uploading $PACKAGE_FILE as main-app-$VERSION.tgz"
+          echo "Uploading $PACKAGE_FILE as main-app-$VERSION.tgz"
       - name: Upload to R2 services
         run:  aws s3 cp "$PACKAGE_FILE" \
       "s3://$R2_BUCKET/main-app-$VERSION.tgz" \
