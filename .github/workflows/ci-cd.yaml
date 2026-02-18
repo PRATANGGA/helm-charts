@@ -36,6 +36,7 @@ jobs:
         run: pwd | ls -lah
       - name: Create helm repo 
         run: | 
+          echo "==================CREATE=HELM=REPO==================" 
           VERSION="${GITHUB_REF_NAME#v}"
           helm package . --version "$VERSION"
       - name: Upload helm package artifact
@@ -68,10 +69,10 @@ jobs:
       - name: Pre upload to R2
         run: |
           pwd 
-          ls -lah 
+          ls -lah
+          echo "$PACKAGE_FILE" 
           echo "==============================================================" 
           VERSION="${GITHUB_REF_NAME}"
-          PACKAGE_FILE="$(ls *.tgz)"
           helm package charts/main-app --version "$VERSION" 
           echo "Uploading $PACKAGE_FILE as main-app-$VERSION.tgz"
       - name: Upload to R2 services
