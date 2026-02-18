@@ -36,7 +36,8 @@ jobs:
       - name: Create helm repo 
         run: | 
           VERSION="${GITHUB_REF_NAME#v}"
-          helm package charts/main-app --version "$VERSION" 
+          helm package . --version "$VERSION"
+
 
   push-on-R2:
     runs-on: ubuntu-latest
