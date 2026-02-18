@@ -66,12 +66,15 @@ jobs:
         run: |
           aws configure set aws_secret_access_key_id "$R2_ACCESS_KEY_ID"
           aws configure set aws_secret_access_key "$R2_ACCESS_KEY"
+          aws configure set region auto
       - name: Pre upload to R2
         run: |
           pwd 
           ls -lah
       - name: Upload to R2 services
         run: |
+          VERSION="${GITHUB_REF_NAME}"
+          PACKAGE_FILE="$(ls * tgz)"
           echo "Uploading $PACKAGE_FILE → main-app-$VERSION.tgz"
           aws s3 cp "$PACKAGE_FILE" "s3://$R2_BUCKET_NAME/main-app-$VERSION.tgz" --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com
 
