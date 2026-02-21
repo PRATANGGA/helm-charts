@@ -51,7 +51,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: helm-create-package
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: 
+          name: helm-package
       - name: Install AWS cli
         run: | 
           sudo apt update -y 
