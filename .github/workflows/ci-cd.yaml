@@ -77,7 +77,7 @@ jobs:
         run: |
           pwd 
           ls -lah
-          aws s3api list-buckets --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com
+          
       - name: Upload to R2 services
         env:
           # The AWS CLI will automatically read these variables
