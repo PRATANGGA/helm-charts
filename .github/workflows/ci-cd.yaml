@@ -62,13 +62,14 @@ jobs:
           sudo ./aws/install --update
       - name: Configure AWS cli for Cloudflare R2
         env:
-          R2_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-        run: |
-          aws configure set aws_secret_access_key_id "$R2_ACCESS_KEY_ID"
-          aws configure set aws_secret_access_key "$R2_ACCESS_KEY"
-          aws configure set region auto
+        # run: |
+        #   aws configure set aws_secret_access_key_id "$R2_ACCESS_KEY_ID"
+        #   aws configure set aws_secret_access_key "$R2_ACCESS_KEY"
+        #   aws configure set region auto
       - name: Pre upload to R2
         run: |
           pwd 
