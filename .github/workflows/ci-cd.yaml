@@ -80,25 +80,12 @@ jobs:
           AWS_DEFAULT_REGION: auto
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
         run: |
-          VERSION="${GITHUB_REF_NAME}"
+          VERSION="${GITHUB_REF_NAME#v}"
           PACKAGE_FILE=$(ls *.tgz)
           echo "Uploading $PACKAGE_FILE → main-app-$VERSION.tgz"
-          aws s3 cp "$PACKAGE_FILE" "s3://$R2_BUCKET_NAME/main-app-$VERSION.tgz" --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com
-
-
-
-
-          
-  
-
-
-
-
-
-        
-
-
-        
-
+          aws s3 cp "$PACKAGE_FILE" \
+            "s3://$R2_BUCKET_NAME/main-app-$VERSION.tgz" \
+            --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com \
+            --region auto
 
 
