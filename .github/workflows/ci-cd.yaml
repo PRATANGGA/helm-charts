@@ -69,6 +69,17 @@ jobs:
         #   aws configure set aws_secret_access_key_id "$R2_ACCESS_KEY_ID"
         #   aws configure set aws_secret_access_key "$R2_ACCESS_KEY"
         #   aws configure set region auto
+      - name: Test R2 List
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_ACCESS_KEY }}
+        run: |
+          aws s3 ls \
+            --endpoint-url https://3745d3c282b14278c8ab6cbe319b42ef.r2.cloudflarestorage.com \
+            --region us-east-1
+
+      
+      
       - name: Pre upload to R2
         env: 
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
